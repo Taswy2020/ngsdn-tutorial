@@ -503,6 +503,9 @@ control IngressPipeImpl (inout parsed_headers_t    hdr,
             // 1. Set the packet egress port to that found in the cpu_out header
             // 2. Remove (set invalid) the cpu_out header
             // 3. Exit the pipeline here (no need to go through other tables
+            standard_metadata.egress_spec = hdr.cpu_out.egress_port;
+            hdr.cpu_out.setInvalid();
+            exit;
         }
 
         bool do_l3_l2 = true;
@@ -556,6 +559,12 @@ control EgressPipeImpl (inout parsed_headers_t hdr,
             // 1. Set cpu_in header as valid
             // 2. Set the cpu_in.ingress_port field to the original packet's
             //    ingress port (standard_metadata.ingress_port).
+
+            // set header format firstly
+            hdr.cpu_in.setValid();
+            // here is to send the packet "packet-in", so set the packet header before sent, as one of field in header to be set is cpu_in.ingress_port, i.e. packet.src_port
+            hdr.cpu_in.ingress_port = standard_metadata.ingress_port;
+            exit;7
         }
 
         // If this is a multicast packet (flag set by l2_ternary_table), make

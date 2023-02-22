@@ -154,7 +154,7 @@ public class InterpreterImpl extends AbstractHandlerBehaviour
         // Create metadata instance for egress port.
         // *** TODO EXERCISE 4: modify metadata names to match P4 program
         // ---- START SOLUTION ----
-        final String outPortMetadataName = "ADD HERE METADATA NAME FOR THE EGRESS PORT";
+        final String outPortMetadataName = "egress_port";
         // ---- END SOLUTION ----
         final PiPacketMetadata outPortMetadata = PiPacketMetadata.builder()
                 .withId(PiPacketMetadataId.of(outPortMetadataName))

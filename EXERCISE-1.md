@@ -228,7 +228,7 @@ Docker container with the given arguments. For a list of arguments you can type
 
 **Note:** we use `--grpc-addr localhost:50001` as the Mininet container is
 executed locally, and `50001` is the TCP port associated to the gRPC server
-exposed by `leaf1`.
+exposed by `leaf1`. (config in docker-compose.yml)
 
 If the shell started successfully, you should see the following output:
 
