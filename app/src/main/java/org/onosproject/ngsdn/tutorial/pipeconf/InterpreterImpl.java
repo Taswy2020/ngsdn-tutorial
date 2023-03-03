@@ -186,7 +186,7 @@ public class InterpreterImpl extends AbstractHandlerBehaviour
         // Find the ingress_port metadata.
         // *** TODO EXERCISE 4: modify metadata names to match P4Info
         // ---- START SOLUTION ----
-        final String inportMetadataName = "ADD HERE METADATA NAME FOR THE INGRESS PORT";
+        final String inportMetadataName = "ingress_port";
         // ---- END SOLUTION ----
         Optional<PiPacketMetadata> inportMetadata = packetIn.metadatas()
                 .stream()
